@@ -40,25 +40,15 @@
     self.userInteractionEnabled = NO;
     self.backgroundColor = [UIColor clearColor];
     
-    _fillColor      = [UIColor magentaColor];
-    _outlineColor   = [UIColor grayColor];
+    _fillColor      = [UIColor colorWithWhite:0 alpha:0.5f];
+    _outlineColor   = [UIColor clearColor];
 }
 
 -(void)decayTouches
 {
     for (UIView *subview in self.subviews)
     {
-        [subview setFrame:CGRectMake(subview.frame.origin.x,
-                                     subview.frame.origin.y,
-                                     subview.frame.size.width * .9,
-                                     subview.frame.size.height * .9)];
-        
-        subview.alpha *= .9;
-        
-        if( subview.frame.size.width < 10 )
-        {
-            [subview removeFromSuperview];
-        }
+        [subview removeFromSuperview];
     }
 }
 

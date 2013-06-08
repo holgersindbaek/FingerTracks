@@ -8,7 +8,7 @@
 
 #import "ftDisplayPoint.h"
 
-#define kTouchRadius 25
+#define kTouchRadius 50
 
 @implementation ftDisplayPoint
 
@@ -18,8 +18,7 @@
     if (self)
     {
         self.opaque     = NO;
-        _fillColor      = [UIColor magentaColor];
-        _outlineColor   = [UIColor grayColor];
+        _fillColor      = [UIColor clearColor];
     }
     return self;
 }
@@ -34,7 +33,6 @@
 {
     self = [self initWithFrame:CGRectMake(point.x-(kTouchRadius/2), point.y-(kTouchRadius/2), kTouchRadius*2, kTouchRadius*2)];
     _fillColor = fillColor;
-    _outlineColor = outlineColor;
     return self;
 }
 
@@ -45,10 +43,6 @@
     
     CGContextSetFillColorWithColor(contextRef, _fillColor.CGColor );
     CGContextFillEllipseInRect(contextRef, CGRectMake(0, 0, kTouchRadius, kTouchRadius));
-    
-    // Draw a circle (border only)
-    CGContextSetFillColorWithColor(contextRef, _outlineColor.CGColor );
-    CGContextStrokeEllipseInRect(contextRef, CGRectMake(0, 0, kTouchRadius, kTouchRadius));
 }
 
 @end
